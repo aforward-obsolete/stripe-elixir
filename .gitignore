@@ -1,0 +1,7 @@
+/ebin
+/deps
+/tmp/dev
+/tmp/test
+erl_crash.dump
+.DS_Store
+.sass*

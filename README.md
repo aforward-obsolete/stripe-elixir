@@ -1,4 +1,20 @@
-stripe-elixir
-=============
+# stripe-elixir
 
-An API for stripe
+## Description
+
+Elixir library to access the Stripe REST API.
+
+## Usage
+
+### Create a payment
+
+```elixir
+Stripe.api_key = "sk_test_abc123"
+
+Stripe::Charge.create(
+  :amount => 400,
+  :currency => "cad",
+  :card => "tok_2DbC", # obtained with Stripe.js
+  :description => "Charge for test@example.com"
+)
+```
