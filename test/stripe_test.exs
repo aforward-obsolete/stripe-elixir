@@ -24,10 +24,9 @@ defmodule StripeTest do
   end
 
   test "url" do
-    assert Stripe.new.url("charges") == "https:://api.stripe.com/v2/charges"
-    assert Stripe.new( protocol: "http", domain: "apitest.stripe.com", version: "v1").url("refund") == "http:://apitest.stripe.com/v1/refund"
+    assert Stripe.new.url("charges") == "https://api.stripe.com/v2/charges"
+    assert Stripe.new( protocol: "http", domain: "apitest.stripe.com", version: "v1").url("refund") == "http://apitest.stripe.com/v1/refund"
   end
-
 
   test "curl_param" do
     assert Stripe.new.curl_param({:api_key,"abc_123"}) == { :u, "abc_123" }
@@ -42,9 +41,8 @@ defmodule StripeTest do
     assert Stripe.new.curl_params([{:api_key,"abc_123"},{:amount,"10 00"}]) == [{ :u, "abc_123" },{ :d, :amount, "10 00" }]
   end
 
-  test "curl_cmd" do
-    assert Stripe.new.curl_cmd([{:api_key,"abc_123"},{:amount,"10 00"}], "http://example.com") == "curl http://example.com -u abc_123: -d \"amount=10 00\""
+  test "cmd" do
+    assert Stripe.new.cmd([{:api_key,"abc_123"},{:amount,"10 00"}], "http://example.com") == "curl http://example.com -u abc_123: -d \"amount=10 00\""
   end
-
 
 end

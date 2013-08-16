@@ -1,8 +1,7 @@
 defrecord Stripe, api_key: nil, protocol: "https", domain: "api.stripe.com", version: "v2" do
 
-  def url(operation, record), do: "#{record.protocol}:://#{record.domain}/#{record.version}/#{operation}"
-
-  def curl_cmd(params,url,record), do: Stripe.Curl.cmd(record.curl_params(params),url)
+  def url(operation, record), do: "#{record.protocol}://#{record.domain}/#{record.version}/#{operation}"
+  def cmd(params,url,record), do: Stripe.Curl.cmd(record.curl_params(params),url)
 
   def curl_param({ :api_key, api_key }, record), do: { :u, api_key }
   def curl_param({ :method, val }, record), do: { :x, val }

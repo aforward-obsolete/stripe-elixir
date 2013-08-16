@@ -1,5 +1,7 @@
 defrecord Stripe.Charge, stripe: Stripe.new do
 
+  def charges(input,record), do: System.cmd(charges_cmd(input,record))
+
   def charges_cmd({ :amount, amount, :currency, currency, :card, card, :description, desc}, record) do
     charges_cmd [ { :amount, amount }, { :currency, currency}, { :card, card }, { :description, desc } ], record
   end
@@ -10,7 +12,7 @@ defrecord Stripe.Charge, stripe: Stripe.new do
 
   def charges_cmd(params,record) when is_list(params) do
     [ { :api_key, record.stripe.api_key } ] ++ params ++ [ { :method, :post } ]
-    |> record.stripe.curl_cmd charges_url(record)
+    |> record.stripe.cmd charges_url(record)
   end
 
   def charges_url(record), do: record.stripe.url("charges")
