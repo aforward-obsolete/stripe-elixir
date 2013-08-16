@@ -27,7 +27,7 @@ defmodule Stripe.Mixfile do
   defp deps do
     [
      # {:hackney, github: "benoitc/hackney"},
-     # {:jsex, github: "talentdeficit/jsex"},
+     {:jsex, github: "talentdeficit/jsex"},
      # {:uri, github: "erlware/uri"},
      # {:ex_doc, github: "elixir-lang/ex_doc" },
      # {:meck, github: "eproxus/meck", tag: "0.7.2" }

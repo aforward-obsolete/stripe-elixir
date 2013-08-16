@@ -1,5 +1,10 @@
 defmodule Stripe.Curl do
 
+  def exec(command_line) do
+    System.cmd("#{command_line} -s")
+    |> JSEX.decode
+  end
+
   def cmd(url), do: "curl #{url}"
   def cmd([],url), do: cmd(url)
   def cmd([h|t],url), do: cmd(t,"#{url} #{parameterize(h)}")

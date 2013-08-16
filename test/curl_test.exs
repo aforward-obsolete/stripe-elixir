@@ -12,6 +12,14 @@ defmodule CurlTest do
     assert Stripe.Curl.cmd( [ { :u, "abc123" }, { :d, :amount, "1000"}, {:d, :card, "tok_1234"}, {:d, :description, "I love stuff" } ], "http://x.com/blah" ) == "curl http://x.com/blah -u abc123: -d amount=1000 -d card=tok_1234 -d \"description=I love stuff\""
   end
 
+  test "exec should return json" do
+    answer = Stripe.Curl.exec("curl https://api.stripe.com/v1/charges -u invalid: -d amount=2000 -d currency=cad -d card=tok_2Og -X POST")
+    assert answer == {:ok,
+                       [{"error",
+                         [{"type", "invalid_request_error"},
+                          {"message", "Invalid API Key provided: *******"}]}]}
+  end
+
   test "parameterize" do
     assert Stripe.Curl.parameterize({:d, :amount, "1000"}) == "-d amount=1000"
     assert Stripe.Curl.parameterize({:d, :amount, "10 00"}) == "-d \"amount=10 00\""
