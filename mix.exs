@@ -11,14 +11,14 @@ defmodule Stripe.Mixfile do
   # Configuration for the OTP application
   def application do
     [
-      applications: [ :hackney, :jsex ],
-      env: [
-        host: "http://localhost",
-        port: "8080",
-        app_key: "app_key",
-        app_secret: "secret",
-        app_id: "app_id"
-      ]
+      # applications: [ :hackney, :jsex ],
+      # env: [
+      #   host: "http://localhost",
+      #   port: "8080",
+      #   app_key: "app_key",
+      #   app_secret: "secret",
+      #   app_id: "app_id"
+      # ]
     ]
   end
 
@@ -26,11 +26,11 @@ defmodule Stripe.Mixfile do
   # { :foobar, "~> 0.1", git: "https://github.com/elixir-lang/foobar.git" }
   defp deps do
     [
-     {:hackney, github: "benoitc/hackney"},
-     {:jsex, github: "talentdeficit/jsex"},
-     {:uri, github: "erlware/uri"},
-     {:ex_doc, github: "elixir-lang/ex_doc" },
-     {:meck, github: "eproxus/meck", tag: "0.7.2" }
+     # {:hackney, github: "benoitc/hackney"},
+     # {:jsex, github: "talentdeficit/jsex"},
+     # {:uri, github: "erlware/uri"},
+     # {:ex_doc, github: "elixir-lang/ex_doc" },
+     # {:meck, github: "eproxus/meck", tag: "0.7.2" }
     ]
   end
 end
