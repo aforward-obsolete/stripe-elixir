@@ -11,7 +11,7 @@ defrecord Stripe.Charge, stripe: Stripe.new do
   end
 
   def charges_cmd(params,record) when is_list(params) do
-    [ { :api_key, record.stripe.api_key } ] ++ params ++ [ { :method, :post } ]
+    [ { :private_key, record.stripe.private_key } ] ++ params ++ [ { :method, :post } ]
     |> record.stripe.cmd charges_url(record)
   end
 

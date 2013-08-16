@@ -9,7 +9,7 @@ Elixir library to access the Stripe REST API.
 ### Create a payment
 
 ```elixir
-Stripe.api_key = "sk_test_abc123"
+Stripe.private_key = "sk_test_abc123"
 
 Stripe::Charge.create(
   :amount => 400,

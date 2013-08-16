@@ -4,7 +4,7 @@ defmodule ChargeTest do
   use ExUnit.Case
 
   setup do
-    stripe = Stripe.new( api_key: "abc123" )
+    stripe = Stripe.new( private_key: "abc123" )
     charge = Stripe.Charge.new( stripe: stripe )
     { :ok, stripe: stripe, charge: charge }
   end

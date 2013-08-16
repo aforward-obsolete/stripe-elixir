@@ -3,9 +3,9 @@ Code.require_file "test_helper.exs", __DIR__
 defmodule StripeTest do
   use ExUnit.Case
 
-  test "api_key" do
-    stripe = Stripe.new api_key: "abc"
-    assert stripe.api_key == "abc"
+  test "private_key" do
+    stripe = Stripe.new private_key: "abc"
+    assert stripe.private_key == "abc"
   end
 
   test "version" do
@@ -29,7 +29,7 @@ defmodule StripeTest do
   end
 
   test "curl_param" do
-    assert Stripe.new.curl_param({:api_key,"abc_123"}) == { :u, "abc_123" }
+    assert Stripe.new.curl_param({:private_key,"abc_123"}) == { :u, "abc_123" }
     assert Stripe.new.curl_param({:amount,"10 00"}) == { :d, :amount, "10 00" }
     assert Stripe.new.curl_param({:method,:get}) == { :x, :get }
     assert Stripe.new.curl_param({:method,:post}) == { :x, :post }
@@ -38,11 +38,11 @@ defmodule StripeTest do
   end
 
   test "curl_params" do
-    assert Stripe.new.curl_params([{:api_key,"abc_123"},{:amount,"10 00"}]) == [{ :u, "abc_123" },{ :d, :amount, "10 00" }]
+    assert Stripe.new.curl_params([{:private_key,"abc_123"},{:amount,"10 00"}]) == [{ :u, "abc_123" },{ :d, :amount, "10 00" }]
   end
 
   test "cmd" do
-    assert Stripe.new.cmd([{:api_key,"abc_123"},{:amount,"10 00"}], "http://example.com") == "curl http://example.com -u abc_123: -d \"amount=10 00\""
+    assert Stripe.new.cmd([{:private_key,"abc_123"},{:amount,"10 00"}], "http://example.com") == "curl http://example.com -u abc_123: -d \"amount=10 00\""
   end
 
 end
