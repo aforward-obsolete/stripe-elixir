@@ -24,6 +24,13 @@ defmodule ChargeTest do
       "curl https://api.stripe.com/v2/charges -u abc123: -d amount=1000 -d blah=def -X POST"
   end
 
+  test "charges should curl the command" do
+    cc_info = "tok_2Og"
+    stripe = Stripe.new( private_key: "sk_test", version: "v1")
+    charge = Stripe.Charge.new(stripe: stripe)
+    answer = charge.charges({ :amount, "2000", :currency, "cad", :card, cc_info, :description, "Charging for services" })
+    assert answer == {:ok, [{"error", [{"type", "invalid_request_error"}, {"message", "Invalid API Key provided: sk_****"}]}]}
+  end
 
   test "charges_url" do
     assert Stripe.Charge.new.charges_url == "https://api.stripe.com/v2/charges"

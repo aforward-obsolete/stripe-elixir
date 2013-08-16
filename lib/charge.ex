@@ -1,6 +1,6 @@
 defrecord Stripe.Charge, stripe: Stripe.new do
 
-  def charges(input,record), do: Stripe.curl.exec(charges_cmd(input,record))
+  def charges(input,record), do: Stripe.Curl.exec(charges_cmd(input,record))
 
   def charges_cmd({ :amount, amount, :currency, currency, :card, card, :description, desc}, record) do
     charges_cmd [ { :amount, amount }, { :currency, currency}, { :card, card }, { :description, desc } ], record
