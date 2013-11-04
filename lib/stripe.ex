@@ -6,6 +6,6 @@ defrecord Stripe, private_key: nil, protocol: "https", domain: "api.stripe.com",
   def curl_param({ :private_key, private_key }, record), do: { :u, private_key }
   def curl_param({ :method, val }, record), do: { :x, val }
   def curl_param({ key, val }, record), do: { :d, key, val }
-  def curl_params(params, record), do: Enum.map(params, curl_param(&1,record))
+  def curl_params(params, record), do: Enum.map(params, &(curl_param(&1,record)))
 
 end

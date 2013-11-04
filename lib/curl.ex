@@ -6,7 +6,7 @@ defmodule Stripe.Curl do
   end
 
   def cmd(url), do: "curl #{url}"
-  def cmd([],url), do: cmd(url)
+  def cmd([],url), do: Stripe.Curl.cmd(url)
   def cmd([h|t],url), do: cmd(t,"#{url} #{parameterize(h)}")
 
   def parameterize(input), do: convert_param(input)

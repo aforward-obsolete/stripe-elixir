@@ -3,8 +3,8 @@ defmodule Stripe.Mixfile do
 
   def project do
     [ app: :"stripe-elixir",
-      version: "0.0.1",
-      elixir: "~> 0.10.2-dev",
+      version: "0.11.0",
+      elixir: "~> 0.11.0",
       deps: deps ]
   end
 
