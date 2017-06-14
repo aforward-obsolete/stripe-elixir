@@ -1,3 +1,6 @@
+
+OBSOLETE, please consider [stripe-post](https://github.com/aforward/stripe-post) and [stripe-callbacks](https://github.com/aforward/stripe-callbacks) instead.
+
 # stripe-elixir
 
 ## Description
